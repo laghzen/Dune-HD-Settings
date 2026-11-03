@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Защита настроек Dune</string>
+    <string name="accessibility_service_name">Блокировка настроек Dune</string>
+    <string name="accessibility_service_description">Перехватывает вызов системных настроек и запрашивает PIN-код перед их открытием.</string>
+</resources>
