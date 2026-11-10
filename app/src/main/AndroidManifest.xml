@@ -10,14 +10,20 @@
         android:label="Защита настроек Dune"
         android:theme="@android:style/Theme.Material.NoActionBar">
 
-        <!-- MainActivity оставлена, чтобы её могла запускать служба через явный Intent.
-             Фильтр MAIN/LAUNCHER удалён — приложение не показывается в меню. -->
+        <!-- Обычный LAUNCHER оставлен для системной кнопки Android «Открыть».
+             LEANBACK_LAUNCHER не указан, поэтому приложение не должно
+             отображаться в TV-лаунчере Dune. -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:excludeFromRecents="true"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <service
             android:name=".DuneSettingsService"
