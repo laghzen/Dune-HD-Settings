@@ -48,11 +48,19 @@ public class MainActivity extends Activity {
 
     private void updateServiceStatus() {
         if (serviceStatus == null) return;
+    
         boolean enabled = isAccessibilityServiceEnabled();
+    
         serviceStatus.setText(enabled
                 ? "Защита активна"
                 : "Защита выключена — включите службу ниже");
+    
         serviceStatus.setTextColor(enabled ? 0xFF00E676 : 0xFFFFC107);
+    
+        Button enableButton = findViewById(R.id.btnEnableService);
+        if (enableButton != null) {
+            enableButton.setVisibility(enabled ? View.GONE : View.VISIBLE);
+        }
     }
 
     private boolean isAccessibilityServiceEnabled() {
