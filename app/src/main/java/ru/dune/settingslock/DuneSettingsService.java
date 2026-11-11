@@ -122,12 +122,13 @@ public class DuneSettingsService extends AccessibilityService {
             return;
         }
 
-        // Сбрасываем сессию только при переходе на домашний экран.
-        // Смена системного package внутри настроек больше не сбрасывает PIN-сессию.
-        if (homePackage != null && homePackage.equals(currentPackage)) {
+        // Любой выход за пределы системных настроек завершает PIN-сессию.
+        // Переключение между разрешёнными пакетами Settings обрабатывается выше.
+        if (settingsWindowVisible) {
             settingsWindowVisible = false;
             clearGrant();
         }
+
     }
 
     private boolean hasFreshGrant() {
